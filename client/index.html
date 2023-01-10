@@ -11,14 +11,12 @@
     <div id="app">
       <div id="chat_container"></div>
       <form>
-        <textarea id="chatai_input" name="prompt" rows="1" cols="1" placeholder="BreatheEasy365..." maxlength="150"></textarea>
-        <div id="the-count">
-          <span id="current">0</span>
-          <span id="maximum">/ 150</span>
-        </div>
-        <button type="submit"><img src="assets/send.svg" alt="send" />
+        <textarea id="chatai_input" name="prompt" rows="1" cols="1" placeholder="BreatheEasy365..." oninput="wordCount()"></textarea>
+        <button type="submit"><img src="assets/send.svg" alt="send" /></button>
       </form>
+      <div class="count-container"><span class="word-count" id="showCount"></span><span id="word-count-limit" class="word-count"> of 150</span></div>
     </div>
+    
     <script type="module" src="script.js"></script>
 
     <!-- Include the Clipboard.js library -->
@@ -30,9 +28,28 @@
 
     clipboard.on('success', function(e) {
         message = document.getElementById(e.text).innerHTML;
-        console.log (message);
         navigator.clipboard.writeText(message);
     });
+
+    function wordCount() {
+      var textArea = document.getElementById("chatai_input");
+      var text = document.getElementById("chatai_input").value;
+      var count = 0;
+      var split = text.split(' ');
+      for (var i = 0; i < split.length; i++) {
+        if (split[i] != "") {
+        count ++;
+        }
+      }
+      if (count > 150){
+        document.getElementById("word-count-limit").style.display = 'none';
+        document.getElementById("showCount").innerHTML ="maximum word count exceeded";
+      }else{
+        document.getElementById("word-count-limit").style.display = 'inline';
+      document.getElementById("showCount").innerHTML = count;
+    }
+      }
+     
     </script>
   </body>
 </html>

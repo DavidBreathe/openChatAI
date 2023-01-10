@@ -5,6 +5,7 @@ import { Configuration, OpenAIApi } from 'openai'
 import nodemon from 'nodemon'
 
 dotenv.config()
+//removed
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,

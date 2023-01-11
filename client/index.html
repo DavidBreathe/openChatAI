@@ -11,7 +11,7 @@
     <div id="app">
       <div id="chat_container"></div>
       <form>
-        <textarea id="chatai_input" name="prompt" rows="1" cols="1" placeholder="BreatheEasy365..." oninput="wordCount()"></textarea>
+        <textarea id="chatai_input" name="prompt" rows="1" cols="1" placeholder="Ask me anything..." oninput="wordCount()"></textarea>
         <button type="submit"><img src="assets/send.svg" alt="send" /></button>
       </form>
       <div class="count-container"><span class="word-count" id="showCount"></span><span id="word-count-limit" class="word-count"> of 150</span></div>
@@ -29,7 +29,14 @@
     clipboard.on('success', function(e) {
         message = document.getElementById(e.text).innerHTML;
         navigator.clipboard.writeText(message);
+        showTooltip(e.trigger,'Copied!');
+        e.clearSelection();
     });
+
+    function showTooltip(elem, msg) {
+      elem.setAttribute('class', 'copy-button tooltipped tooltipped-s');
+      elem.setAttribute('aria-label', msg);
+    }
 
     function wordCount() {
       var textArea = document.getElementById("chatai_input");

@@ -23,11 +23,16 @@ function loader(element) {
 
 function typeText(element, text) {
     let index = 0
-
+    
     let interval = setInterval(() => {
         if (index < text.length) {
             element.innerHTML += text.charAt(index)
             index++
+            // scroll to bottom when typing
+            var shouldScroll = chatContainer.scrollTop + chatContainer.clientHeight === chatContainer.scrollHeight;
+            if (!shouldScroll) {
+            scrollToBottom();
+            }
         } else {
             clearInterval(interval)
         }
@@ -57,7 +62,7 @@ function chatStripe(isAi, value, uniqueId) {
                 </div>                
                 <div class="message" id=${uniqueId}>${value}
                 </div>
-                <button class="copy-button" style="${isAi ? 'display:block;' : 'display:none;'}" data-clipboard-text=${uniqueId}>
+                <button class="copy-button" style="${isAi ? 'display:block;' : 'display:none;'}" data-clipboard-text=${uniqueId} aria-label="Copied!">
                 <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" 
                 stroke-linecap="round" stroke-linejoin="round" 
                 class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +153,8 @@ const handleSubmit = async (e) => {
         const data = await response.json();
         const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
 
-        typeText(messageDiv, parsedData);       
+        typeText(messageDiv, parsedData);
+
     } else {
         const err = await response.text()
 
@@ -170,10 +176,8 @@ form.addEventListener('keyup', (e) => {
     current.innerHTML=characterCount;
 })
 
-
- 
-  
-function copyMessageContent(id,message){
-    console.log(message);
-}  
       
+function scrollToBottom() {
+  // defined in type text funtion
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }

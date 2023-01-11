@@ -1,21 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Alegreya Sans", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  background: #343541;
+  background: #fff;
 }
 
 #app {
   width: 100vw;
   height: 100vh;
-  background: #343541;
-
+  background: #ffffff;
+  /*border: 1px solid #343541;
+  border-radius: 5px;
+  */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,12 +32,12 @@ body {
   -ms-overflow-style: none;
   margin-top: 20px;
   margin-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5px;
+  padding-right: 5px;  
+  padding-bottom: 5px;
   flex-direction: column;
   gap: 10px;
   scrollbar-width: none;
-  padding-bottom: 20px;
   scroll-behavior: smooth;
 }
 
@@ -51,8 +53,8 @@ body {
   max-width: 1280px !important;
   margin: 0 auto;
   margin-bottom: 10px;
-  background: #40414F;
-  border-radius: 7px;
+  background: #faf9f8;
+  border-radius: 5px;
   box-shadow: rgba(0,0,0,.1) 1px 1px 1px 1px;  
   display: flex;
   flex-direction: row;
@@ -60,7 +62,7 @@ body {
 }
 
 .ai {
-  background: #40414F;
+  background: rgba(239,239,239,.5);
 }
 
 .chat {
@@ -98,14 +100,14 @@ body {
 
 .message {
   flex: 1;
-  color: #dcdcdc;
-  font-size: 20px;
+  color: #333333;
+  font-size: 1rem;
+  font-weight: normal;
   max-width: 100%;
   overflow: auto;
   margin-top: 5px;
   margin-bottom: 5px;
-  white-space: pre-wrap; 
-
+  white-space: pre-wrap;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -115,9 +117,10 @@ body {
   align-items: flex-end;
   justify-content: flex-end;
   gap: 0.2rem;
-  font-size: .75rem;
+  font-size: 1rem;
+  font-weight: normal;
   line-height: 1rem;
-  color: #fff;
+  color: #333333;
   margin-top: .2rem;
 }
 
@@ -134,31 +137,32 @@ body {
 }
 
 form {
-  width: 90%;
+  width: 98%;
   max-width: 1280px;
   margin: 0 auto;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  background: #40414F;
-  border-radius: 7px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;  
+  background: rgba(239,239,239,1);
+  border-radius: 5px;
   box-shadow: rgba(0,0,0,.1) 1px 1px 1px 1px; 
   display: flex;
-  flex-direction: row;
+  flex-direction: row;  
   gap: 10px;
 }
 
 textarea {
   width: 100%;
-  height: 60px;
+  height: 50px;
   overflow: auto;
   resize: none;
-  color: #fff;
-  font-size: 18px;
+  color: #333333;
+  font-size: 1rem;
+  font-weight: normal;
   margin-top: 2px;
-  padding: 15px;
+  padding: 5px;
   background: transparent;
-  border-radius: 25px;
+  border-radius: 5px;
   border: none;
   outline: none;  
 }
@@ -189,11 +193,12 @@ form img {
 }
 .count-container {
   margin-left: auto;
-  margin-right: 60px;
+  margin-right: 80px;
   font-size: 12px;
-  margin-top: -8px;
-}
-.word-count{
-  color: #fff;
 
 }
+.word-count{
+  color: #333333;
+
+}
+
